@@ -16,3 +16,8 @@ func GetGameById(id uint) models.Game {
 	utils.Database.Find(&game, id)
 	return game
 }
+
+func CreateGame(game models.Game) models.Game {
+	utils.Database.Create(&game)
+	return game
+}

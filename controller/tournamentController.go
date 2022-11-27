@@ -48,6 +48,27 @@ func GetTournaments(c *gin.Context) {
 	c.JSON(http.StatusOK, response)
 }
 
+func GetTournamentByGameId(c *gin.Context) {
+	id, err := strconv.ParseUint(c.Param("id"), 10, 64)
+	if err != nil {
+		response := models.Response{
+			Data:  nil,
+			Error: err.Error(),
+		}
+		c.JSON(http.StatusBadRequest, response)
+		return
+	}
+
+	tournament := service.GetTournamentsByGameID(uint(id))
+
+	response := models.Response{
+		Data:  tournament,
+		Error: nil,
+	}
+
+	c.JSON(http.StatusOK, response)
+}
+
 func GetTournamentById(c *gin.Context) {
 	id, err := strconv.ParseUint(c.Param("id"), 10, 64)
 	if err != nil {

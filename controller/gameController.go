@@ -40,3 +40,17 @@ func GetGames(c *gin.Context) {
 
 	c.JSON(http.StatusOK, response)
 }
+
+func CreateGame(c *gin.Context) {
+	var game models.Game
+	c.BindJSON(&game)
+
+	game = service.CreateGame(game)
+
+	response := models.Response{
+		Data:  game,
+		Error: nil,
+	}
+
+	c.JSON(http.StatusOK, response)
+}

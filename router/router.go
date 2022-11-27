@@ -11,14 +11,18 @@ func InitializeRouter() *gin.Engine {
 	apiRoute := router.Group("/api")
 	{
 		apiRoute.GET("/", controller.Index)
-		apiRoute.GET("/tournaments", controller.GetTournaments)
 		apiRoute.GET("/tournament/:id", controller.GetTournamentById)
 		apiRoute.POST("/tournament", controller.CreateTournament)
 		apiRoute.PUT("/tournament", controller.UpdateTournament)
 		apiRoute.DELETE("/tournament/:id", controller.DeleteTournament)
 
+		apiRoute.GET("/tournaments", controller.GetTournaments)
+		apiRoute.GET("/tournaments/:id", controller.GetTournamentByGameId)
+
 		apiRoute.GET("/games", controller.GetGames)
+
 		apiRoute.GET("/game/:id", controller.GetGameById)
+		apiRoute.POST("/game", controller.CreateGame)
 	}
 
 	return router

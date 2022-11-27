@@ -9,13 +9,13 @@ type Game struct {
 type Tournament struct {
 	ID          uint   `gorm:"primaryKey" json:"id"`
 	Name        string `json:"name"`
-	GameID      uint   `json:"game_id"`
+	GameID      uint   `json:"game"`
 	Description string `json:"description"`
 	Location    string `json:"location"`
-	StartDate   string `json:"start_date"`
-	EndDate     string `json:"end_date"`
-	Prize       string `json:"prize"`
+	StartDate   string `json:"startDate"`
+	EndDate     string `json:"endDate"`
+	Prize       int    `json:"prize"`
 	Organizer   string `json:"organizer"`
 	Contact     string `json:"contact"`
-	MaxTeam     int    `json:"max_team"`
+	MaxTeam     int    `json:"maxTeam"`
 }

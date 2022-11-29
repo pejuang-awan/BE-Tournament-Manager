@@ -42,7 +42,7 @@ func GetGames(c *gin.Context) {
 }
 
 func CreateGame(c *gin.Context) {
-	var game models.Game
+	var game []models.Game
 	c.BindJSON(&game)
 
 	game = service.CreateGame(game)

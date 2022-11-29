@@ -19,7 +19,7 @@ jobs:
       
       - name: Create app.env
         run: |
-          echo -e '${{ secrets.ENV }}' >> .env
+          echo -e '${{ secrets.ENV }}' >> config/.env
 
       # Connect to GCP with Service Account
       - name: Auth to GCP

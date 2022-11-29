@@ -7,7 +7,7 @@ on:
 env:
   PROJECT_ID: si-tourney
   SERVICE: be-tournament-manager
-  REGION: us-central1
+  REGION: asia-southeast2
   SERVER_ENV: dev
   SERVER_DEBUG: true
 

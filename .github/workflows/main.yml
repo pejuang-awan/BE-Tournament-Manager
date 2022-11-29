@@ -16,12 +16,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      
-      - name: Create app.env
-        run: |
-          echo -e '${{ secrets.ENV }}' >> config/.env
-          ls -al
-          cat config/.env
 
       # Connect to GCP with Service Account
       - name: Auth to GCP

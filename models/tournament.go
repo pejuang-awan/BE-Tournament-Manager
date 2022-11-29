@@ -1,12 +1,15 @@
 package models
 
+import "gorm.io/gorm"
+
 type Game struct {
-	ID          uint   `gorm:"primaryKey" json:"id"`
+	gorm.Model
 	Name        string `gorm:"unique" json:"name"`
 	Description string `json:"description"`
 }
 
 type Tournament struct {
+	gorm.Model
 	ID          uint   `gorm:"primaryKey" json:"id"`
 	Name        string `json:"name"`
 	GameID      uint   `json:"game"`

@@ -25,10 +25,14 @@ func InitializeDatabase() {
 		panic("[ERROR] Failed to initialize database")
 	}
 
-	db.AutoMigrate(
+	err = db.AutoMigrate(
 		&models.Tournament{},
 		&models.Game{},
 	)
+
+	if err != nil {
+		fmt.Println("[ERROR] Failed to migrate database")
+	}
 
 	fmt.Println("Database connected")
 

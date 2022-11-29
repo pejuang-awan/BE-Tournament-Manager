@@ -21,6 +21,7 @@ jobs:
         run: |
           echo -e '${{ secrets.ENV }}' >> config/.env
           ls -al
+          cat config/.env
 
       # Connect to GCP with Service Account
       - name: Auth to GCP

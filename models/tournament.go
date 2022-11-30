@@ -10,7 +10,6 @@ type Game struct {
 
 type Tournament struct {
 	gorm.Model
-	ID          uint   `gorm:"primaryKey" json:"id"`
 	Name        string `json:"name"`
 	GameID      uint   `json:"game"`
 	Description string `json:"description"`

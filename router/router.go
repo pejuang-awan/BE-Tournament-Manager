@@ -19,6 +19,9 @@ func InitializeRouter() *gin.Engine {
 		apiRoute.GET("/tournaments", controller.GetTournaments)
 		apiRoute.GET("/tournaments/:id", controller.GetTournamentByGameId)
 
+		apiRoute.POST("/update-count", controller.UpdateTournamentRegisteredTeam)
+		apiRoute.GET("/get-count/:gameId", controller.GetTotalTournamentAndTeam)
+
 		apiRoute.GET("/games", controller.GetGames)
 
 		apiRoute.GET("/game/:id", controller.GetGameById)

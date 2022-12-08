@@ -150,3 +150,51 @@ func GetTournamentsByGameID(c *gin.Context) {
 	}
 	c.JSON(http.StatusOK, response)
 }
+
+func UpdateTournamentRegisteredTeam(c *gin.Context) {
+	var updateTournament models.UpdateTournament
+
+	if err := c.ShouldBindJSON(&updateTournament); err != nil {
+		response := models.Response{
+			Data:  nil,
+			Error: err.Error(),
+		}
+		c.JSON(http.StatusBadRequest, response)
+		return
+	}
+
+	tournament := service.UpdateTournamentRegisteredTeam(updateTournament.TournamentId, updateTournament.TeamCount)
+
+	response := models.Response{
+		Data:  tournament,
+		Error: nil,
+	}
+
+	c.JSON(http.StatusOK, response)
+}
+
+func GetTotalTournamentAndTeam(c *gin.Context) {
+	gameId, err := strconv.ParseUint(c.Param("gameId"), 10, 64)
+	if err != nil {
+		response := models.Response{
+			Data:  nil,
+			Error: err.Error(),
+		}
+		c.JSON(http.StatusBadRequest, response)
+		return
+	}
+	tournamentTotal := service.GetTotalTournament(uint(gameId))
+	teamTotal := service.GetTotalTeamByGameId(uint(gameId))
+
+	total := models.Total{
+		TournamentTotal: tournamentTotal,
+		TeamTotal:       teamTotal,
+	}
+
+	response := models.Response{
+		Data:  total,
+		Error: nil,
+	}
+
+	c.JSON(http.StatusOK, response)
+}

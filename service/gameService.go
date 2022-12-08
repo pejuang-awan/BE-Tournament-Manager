@@ -21,3 +21,13 @@ func CreateGame(game []models.Game) []models.Game {
 	utils.Database.Create(&game)
 	return game
 }
+
+func UpdateGame(game models.Game) models.Game {
+	utils.Database.Save(&game)
+	return game
+}
+
+func GetTotalTournament(gid uint) int {
+	totalTournament := GetGameById(gid).RegisteredTournament
+	return totalTournament
+}

@@ -49,7 +49,7 @@ func GetTournamentsByGameName(gameName string) []models.Tournament {
 
 func UpdateTournamentRegisteredTeam(tid uint, team int) models.Tournament {
 	tournament := GetTournamentById(tid)
-	tournament.RegisteredTeam += team
+	tournament.RegisteredTeam = team
 	UpdateTournament(tournament)
 	return tournament
 }
